@@ -1945,6 +1945,11 @@ __webpack_require__.r(__webpack_exports__);
       })
     };
   },
+  methods: {
+    createUser: function createUser() {
+      this.form.post('api/user');
+    }
+  },
   mounted: function mounted() {
     console.log('Component mounted.');
   }
