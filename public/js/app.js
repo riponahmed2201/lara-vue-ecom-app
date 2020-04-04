@@ -1952,20 +1952,19 @@ __webpack_require__.r(__webpack_exports__);
     loadUsers: function loadUsers() {
       var _this = this;
 
+      //  axios.get("api/user").then(({ data }) => (this.users = data));
       axios.get("api/user").then(function (_ref) {
         var data = _ref.data;
-        return _this.users = data.data;
+        _this.users = data;
+        console.log(data);
       });
     },
     createUser: function createUser() {
       this.form.post('api/user');
-    },
-    created: function created() {
-      this.loadUsers();
     }
   },
-  mounted: function mounted() {
-    console.log('Component mounted.');
+  created: function created() {
+    this.loadUsers();
   }
 });
 
@@ -54071,6 +54070,7 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
   routes: routes // short for `routes: routes`
 
 });
+vue.filter;
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue

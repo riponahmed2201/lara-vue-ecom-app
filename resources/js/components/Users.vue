@@ -19,7 +19,7 @@
                             <th>Name</th>
                             <th>Email</th>
                             <th>Type</th>
-                             <th>Registered At</th>
+                            <th>Registered At</th>
                             <th>Modify</th>
                         </tr>
                         </thead>
@@ -42,7 +42,7 @@
                                 </a>
 
                             </td>
-                    </tr>
+                      </tr>
                         
                         </tbody>
                     </table>
@@ -138,18 +138,19 @@
         },
         methods:{
             loadUsers(){
-               axios.get("api/user").then(({ data }) => (this.users = data));
+                //  axios.get("api/user").then(({ data }) => (this.users = data));
+               axios.get("api/user").then(({ data }) => {
+                this.users = data;
+                console.log(data);
+                });
             },
             createUser(){
                 this.form.post('api/user');
             },
-            created(){
-                 this.loadUsers();
-            }
         },
 
-        mounted() {
-            console.log('Component mounted.')
-        }
+    created(){
+    this.loadUsers();
+    }
     }
 </script>

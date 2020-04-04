@@ -29,8 +29,10 @@ let routes = [
 
   const router = new VueRouter({
       mode: 'history', // ai mode ta dile url a hit korle ar 404 page not found asbe na 
-    routes // short for `routes: routes`
+      routes // short for `routes: routes`
   })
+
+  vue.filter
 
 /**
  * The following block of code may be used to automatically register your
