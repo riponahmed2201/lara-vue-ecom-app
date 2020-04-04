@@ -19,25 +19,30 @@
                             <th>Name</th>
                             <th>Email</th>
                             <th>Type</th>
+                             <th>Registered At</th>
                             <th>Modify</th>
                         </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                            <td>183</td>
-                            <td>John Doe</td>
-                            <td>11-7-2014</td>
-                            <td><span class="tag tag-success">Approved</span></td>
+                        <tr v-for="user in users.data" :key="user.id">
+
+                            <td>{{user.id}}</td>
+                            <td>{{user.name}}</td>
+                            <td>{{user.email}}</td>
+                            <td>{{user.type | upText}}</td>
+                            <td>{{user.created_at | myDate}}</td>
+
                             <td>
-                                <a href="">  
+                                <a href="#">
                                     <i class="fa fa-edit blue"></i>
                                 </a>
-                                   /
-                                <a href="">  
+                                /
+                                <a href="#">
                                     <i class="fa fa-trash red"></i>
                                 </a>
+
                             </td>
-                        </tr>
+                    </tr>
                         
                         </tbody>
                     </table>
@@ -49,18 +54,16 @@
         </div>
 
     <!-- START  Modal -->
-    <!-- Modal -->
             <div class="modal fade" id="addNew" tabindex="-1" role="dialog" aria-labelledby="addNewLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" v-show="!editmode" id="addNewLabel">Add New</h5>
-                    <h5 class="modal-title" v-show="editmode" id="addNewLabel">Update User's Info</h5>
+                    <h5 class="modal-title"  id="addNewLabel">Add New</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form @submit.prevent="editmode ? updateUser() : createUser()">
+                <form @submit.prevent="createUser()">
                 <div class="modal-body">
                      <div class="form-group">
                         <input v-model="form.name" type="text" name="name"
@@ -103,8 +106,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                    <button v-show="editmode" type="submit" class="btn btn-success">Update</button>
-                    <button v-show="!editmode" type="submit" class="btn btn-primary">Create</button>
+                    <button  type="submit" class="btn btn-primary">Create</button>
                 </div>
 
                 </form>
@@ -121,6 +123,8 @@
 
         data(){
             return {
+             users : {},
+
                 form: new Form({
                     id:'',
                     name : '',
@@ -133,9 +137,14 @@
             }
         },
         methods:{
+            loadUsers(){
+               axios.get("api/user").then(({ data }) => (this.users = data));
+            },
             createUser(){
                 this.form.post('api/user');
-                
+            },
+            created(){
+                 this.loadUsers();
             }
         },
 

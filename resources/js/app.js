@@ -28,7 +28,7 @@ let routes = [
 
 
   const router = new VueRouter({
-      mode: 'history',
+      mode: 'history', // ai mode ta dile url a hit korle ar 404 page not found asbe na 
     routes // short for `routes: routes`
   })
 
