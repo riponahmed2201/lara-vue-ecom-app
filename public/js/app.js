@@ -1952,12 +1952,13 @@ __webpack_require__.r(__webpack_exports__);
     loadUsers: function loadUsers() {
       var _this = this;
 
-      //  axios.get("api/user").then(({ data }) => (this.users = data));
       axios.get("api/user").then(function (_ref) {
         var data = _ref.data;
-        _this.users = data;
-        console.log(data);
-      });
+        return _this.users = data;
+      }); //    axios.get("api/user").then(({ data }) => {
+      //     this.users = data;
+      //     console.log(data);
+      //     });
     },
     createUser: function createUser() {
       this.$Progress.start();
@@ -1971,7 +1972,12 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   created: function created() {
+    var _this2 = this;
+
     this.loadUsers();
+    setInterval(function () {
+      return _this2.loadUsers();
+    }, 3000);
   }
 });
 

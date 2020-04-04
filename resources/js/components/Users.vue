@@ -138,11 +138,11 @@
         },
         methods:{
             loadUsers(){
-                //  axios.get("api/user").then(({ data }) => (this.users = data));
-               axios.get("api/user").then(({ data }) => {
-                this.users = data;
-                console.log(data);
-                });
+                 axios.get("api/user").then(({ data }) => (this.users = data));
+            //    axios.get("api/user").then(({ data }) => {
+            //     this.users = data;
+            //     console.log(data);
+            //     });
             },
             createUser(){
                  this.$Progress.start();
@@ -161,6 +161,7 @@
 
     created(){
     this.loadUsers();
+    setInterval(() => this.loadUsers(), 3000);
     }
     }
 </script>
