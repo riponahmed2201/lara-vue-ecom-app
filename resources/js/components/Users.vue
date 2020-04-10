@@ -139,8 +139,25 @@
             }
         },
         methods:{
-            updateUser(){
-                console.log('editing data');
+            updateUser(id){
+                this.$Progress.start();
+                // console.log('editing data');
+                this.form.put('api/user/'+this.form.id)
+                .then(()=>{
+                    // success
+                    $('#addNew').modal('hide');
+                        Swal.fire(
+                            'Updated!',
+                            'Information has been Updated.',
+                            'success'
+                            )
+                            this.$Progress.finish();
+                            Fire.$emit('AfterCreate');
+                })
+                .catch(()=>{
+                    this.$Progress.fail();
+                    //catch the error
+                })
             },
             editModal(user){
                 this.editmode = true;
@@ -171,7 +188,7 @@
                         this.form.delete('api/user/'+id).then(()=>{
                                 Swal.fire(
                                 'Deleted!',
-                                'Your file has been deleted.',
+                                'Your Information has been deleted.',
                                 'success'
                                 )
                             Fire.$emit('AfterCreate');
