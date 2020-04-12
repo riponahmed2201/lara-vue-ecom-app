@@ -130,13 +130,9 @@ const app = new Vue({
   methods: {
     searchit() {
       console.log('search');
-      // searchit: _.debounce(() => {   // using loada
-      //   Fire.$emit('searching');
-      // }, 1000)
-
-      //   printme(){
-      //   // window.print();
-      // }
+      searchit: _.debounce(() => {  
+        Fire.$emit('searching');
+      }, 1000)
     }
   }
 });

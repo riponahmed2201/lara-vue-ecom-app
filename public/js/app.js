@@ -80649,12 +80649,11 @@ var app = new Vue({
   },
   methods: {
     searchit: function searchit() {
-      console.log('search'); // searchit: _.debounce(() => {   // using loada
-      //   Fire.$emit('searching');
-      // }, 1000)
-      //   printme(){
-      //   // window.print();
-      // }
+      console.log('search');
+
+      searchit: _.debounce(function () {
+        Fire.$emit('searching');
+      }, 1000);
     }
   }
 });
