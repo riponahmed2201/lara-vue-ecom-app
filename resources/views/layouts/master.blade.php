@@ -42,7 +42,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="index3.html" class="brand-link">
+    <a href="javascript:void(0)" class="brand-link">
       <img src="./img/logo.png" alt="laraVue Logo" class="brand-image img-circle elevation-3"
            style="opacity: .8">
       <span class="brand-text font-weight-light">laravel Vue</span>
@@ -56,7 +56,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
           <img src="/img/profile.png" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">
+          <a href="javascript:void(0)" class="d-block">
             {{ Auth::user()->name }}
             <p>{{Auth::user()->type}}</p>
           </a>
@@ -103,6 +103,15 @@ scratch. This page gets rid of all links and provides the needed markup only.
               <i class="nav-icon fas fa-cogs"></i>
               <p>
               Developer
+              </p>
+            </router-link>
+          </li>
+
+          <li class="nav-item">
+            <router-link to="/employee" class="nav-link">
+              <i class="nav-icon fas fa-users"></i>
+              <p>
+              All Employee
               </p>
             </router-link>
           </li>
