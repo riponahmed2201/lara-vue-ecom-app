@@ -6,7 +6,7 @@
                     <div class="card-header">
                          <h3 class="card-title">Employees Information</h3>
                         <div class="card-tools">
-                            <button class="btn btn-success" >Add New <i class="fas fa-user-plus fa-fw"></i></button>
+                            <button class="btn btn-success" data-toggle="modal" data-target="#addNew">Add New <i class="fas fa-user-plus fa-fw"></i></button>
                         </div>
                     </div>
                     <div class="card-body">
@@ -76,7 +76,105 @@
                 </div>
             </div>
         </div>
-        
+           <!-- START  Modal -->
+            <div class="modal fade" id="addNew" tabindex="-1" role="dialog" aria-labelledby="addNewLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addNewLabel">Add New Employee</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form >
+                <div class="modal-body">
+
+                    <div class="form-group">
+                        <input v-model="form.staff_code" type="number" name="staff_code" placeholder="Staff Code"
+                            class="form-control" :class="{ 'is-invalid': form.errors.has('staff_code') }">
+                        <has-error :form="form" field="staff_code"></has-error>
+                    </div>
+
+                     <div class="form-group">
+                        <input v-model="form.last_name" type="text" name="first_name" placeholder="Last Name"
+                            class="form-control" :class="{ 'is-invalid': form.errors.has('last_name') }">
+                        <has-error :form="form" field="last_name"></has-error>
+                    </div>
+
+                    <div class="form-group">
+                        <input v-model="form.name" type="text" name="last_name" placeholder="First Name"
+                            class="form-control" :class="{ 'is-invalid': form.errors.has('first_name') }">
+                        <has-error :form="form" field="first_name"></has-error>
+                    </div>
+
+                     <div class="form-group">
+                        <input v-model="form.position" type="text" name="position" placeholder="Position"
+                            class="form-control" :class="{ 'is-invalid': form.errors.has('position') }">
+                        <has-error :form="form" field="position"></has-error>
+                    </div>
+
+                    <div class="form-group">
+                        <input v-model="form.category" type="text" name="category" placeholder="Category"
+                            class="form-control" :class="{ 'is-invalid': form.errors.has('category') }">
+                        <has-error :form="form" field="category"></has-error>
+                    </div>
+
+                    <div class="form-group">
+                        <input v-model="form.level" type="text" name="level" placeholder="Level"
+                            class="form-control" :class="{ 'is-invalid': form.errors.has('level') }">
+                        <has-error :form="form" field="level"></has-error>
+                    </div>
+
+                    <div class="form-group">
+                        <input v-model="form.base" type="text" name="base"
+                            placeholder="Base"
+                            class="form-control" :class="{ 'is-invalid': form.errors.has('base') }">
+                        <has-error :form="form" field="base"></has-error>
+                    </div>
+
+                    <div class="form-group">
+                        <input v-model="form.basic_salary" type="text" name="basic_salary" placeholder="Basic Salary"
+                            class="form-control" :class="{ 'is-invalid': form.errors.has('basic_salary') }">
+                        <has-error :form="form" field="basic_salary"></has-error>
+                    </div>
+
+                     <div class="form-group">
+                        <input v-model="form.gross_salary" type="text" name="gross_salary" placeholder="Gross Salary"
+                            class="form-control" :class="{ 'is-invalid': form.errors.has('gross_salary') }">
+                        <has-error :form="form" field="gross_salary"></has-error>
+                    </div>
+
+                    <div class="form-group">
+                        <input v-model="form.pf_amount" type="text" name="pf_amount" placeholder="Provident Amount"
+                            class="form-control" :class="{ 'is-invalid': form.errors.has('pf_amount') }">
+                        <has-error :form="form" field="pf_amount"></has-error>
+                    </div>
+
+                    <div class="form-group">
+                        <input v-model="form.joining_date" type="date" name="joining_date" placeholder="Joining Date"
+                            class="form-control" :class="{ 'is-invalid': form.errors.has('joining_date') }">
+                        <has-error :form="form" field="joining_date"></has-error>
+                    </div>
+
+                    <div class="form-group">
+                        <input v-model="form.ending_date" type="date" name="ending_date"
+                            placeholder="Ending Date"
+                            class="form-control" :class="{ 'is-invalid': form.errors.has('ending_date') }">
+                        <has-error :form="form" field="ending_date"></has-error>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    <button  type="submit" class="btn btn-success">Create</button>
+                </div>
+
+                </form>
+
+                </div>
+            </div>
+            </div>
+    <!-- END  Modal -->
     </div>
 </template>
 
